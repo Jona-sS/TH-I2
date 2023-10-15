@@ -10,6 +10,7 @@ Eventuell muss git user name und email in den bash eingetragen werden
 (https://www.youtube.com/watch?v=lYiE5lBS13E)
 
     Verwendung:
-Comitnachricht zwingend nötig
+Comit Nachricht zwingend nötig.    
 Bei "gefährlichen" Änderungen neune Branch aufmachen (nicht in Main Pushen) =>Mergen
-U = Untrackt
+U = Untrackt (kommt nicht imt Git vor).
+M = Merge (zusammen führen)
