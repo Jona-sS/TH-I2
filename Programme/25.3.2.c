@@ -51,5 +51,4 @@ void ausgabe(int zahlen[MAX_LENGTH], int length){
         printf("%d",zahlen[i]);
     }
     printf("\n");
-
 }
