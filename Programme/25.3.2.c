@@ -21,8 +21,6 @@ int main()
     {
         zahlen[i]=rand()%2;
     }
-            //Nötig falls Zahlen ein char Array: (dann auch Ausgabe ohne Schleife möglich)
-            //zahlen[length] = '\0'; // Nullterminator
     ausgabe(zahlen, length);
     //Komprimieren:
     while (length > 1) {
@@ -37,11 +35,9 @@ int main()
         if(length%2){//leztes Bit bei ungerader Länge übernehmen
             zahlen_komprimiert[compressedLength++]=zahlen[length-1];
         }
-                //zahlen_komprimiert[compressedLength] = '\0';
-                //printf("%s\n", zahlen_komprimiert); // Ausgabe der komprimierten Sequenz
         length = compressedLength;
         for (int i = 0; i < length; i++) {
-            zahlen[i] = zahlen_komprimiert[i]; // Kopiere die komprimierte Sequenz in sequence
+            zahlen[i] = zahlen_komprimiert[i]; // Kopiere die komprimierte Sequenz in Sequence
         }
         ausgabe(zahlen, length);
     }   
