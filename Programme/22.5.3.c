@@ -24,5 +24,6 @@ long umwandlung(long zahl)
     if (umwandlung(zahl / 2) == 1)
     {
         printf("%d", zahl % 2);
+        return 1;
     }
 }
