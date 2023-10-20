@@ -48,5 +48,4 @@ void edit(char string[],char suche[],char ersetze[]){
         }
         ptr=strstr(ptr+1,suche); //nach weiteren Vorkommen suchen
     }
-
 }
