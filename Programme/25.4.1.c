@@ -18,6 +18,6 @@ int main(){
             z++; //Indexverschiebung damit keine Lücke an den Stellen des Zeichens entsteht
         }
     }
-    newString[strlen(string)-z] ='\0';//mit Nullzeichen neune Array zu String machen
+    newString[strlen(string)-z] ='\0';//mit Nullzeichen neunen Array zu String machen
     printf("......Die neue Zeichenkette ist dann: %s",newString);
 }
