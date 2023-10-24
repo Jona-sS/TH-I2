@@ -52,7 +52,6 @@ int main()
                 }
                 break;
             }
-
         }
         //printf("w:%d, ",wegLaenge);
         haeufigkeit[wegLaenge]++;
