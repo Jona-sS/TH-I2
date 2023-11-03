@@ -2,12 +2,12 @@
 #include <stdio.h>
 #include <string.h>
 
-int colorToNumber(char string[]);//switch case mit string
+int colorToNumber(char string[]);
 
 int main(){
     char *mischMatrix[3][3] ={{"Gruen","Gelb","Blau"},{"Gelb","Rot","Purpur"},{"Blau","Purpur","Violett"}};
-    //char *eingangsMatrix[3] ={"Gruen","Rot","Violett"};
     char ersteEingabe[20], zweiteEingabe[20];
+    //Eingaben
     printf("Erste Grundfarbe (Gruen Rot Violett ):");
     while(scanf("%20s",ersteEingabe)!=1||(strcmp(ersteEingabe,"Gruen")&&strcmp(ersteEingabe,"Rot")&&strcmp(ersteEingabe,"Violett"))){
         printf("..... Unbekannte Grundfarbe %s (Neue Eingabe machen)",ersteEingabe);
@@ -18,10 +18,9 @@ int main(){
         printf("..... Unbekannte Grundfarbe %s (Neue Eingabe machen)",zweiteEingabe);
         printf("Zweite Grundfarbe (Gruen Rot Violett):");
     }
+    //mit colorToNumber Eingabeindex ermitteln und entstehende Farbe aus der mischMatrix ausgeben:
     printf("..... Die Mischfarbe ist dann %s",mischMatrix[colorToNumber(ersteEingabe)][colorToNumber(zweiteEingabe)]);
-
 }
-
 int colorToNumber(char string[]){
     if(!strcmp(string,"Gruen")){
         return 0;

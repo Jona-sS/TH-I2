@@ -4,62 +4,55 @@
 #include <stdlib.h>
 #define maxMoves 150
 
+void ausgabe(int haeufigkeit[], float average);
+
 int main()
 {
     srand(time(NULL));
-    int anzahl;
-    //int wuerfel[2][2][2] = {{{1, 0}, {0, 0}}, {{0, 0}, {0, 0}}}; // 3D (Start[0][0][0]=1;Ziel[1][1][1]=1)                                    
-    int bewegung;
-    int wegLaenge;
+    int anzahl, bewegung, wegLaenge;                                  
     int haeufigkeit[maxMoves];//wie Haeufig die durch den Index angegebene Laenge benoetigt wurde
     float average;
     for(int i=0;i<maxMoves;i++){//damit keine unerwuenschten Werte verarbeitet wertden
         haeufigkeit[i]=0;
     }
-    //int laengeMitHaeufigkeit[2][10];//Alternative 1D:Zuege und 2D:Haeufigkeit
-    printf("Wieviel Simulationen: ");
+    printf("Wieviel Simulationen: ");//Eingabe
     while (scanf("%d", &anzahl) != 1 || anzahl < 0);
     for (int i = 0; i < anzahl; i++)
     {
-        int pos[3] = {0, 0, 0};  // Bildet 3D ab, 0 default 1 offset
+        int pos[3] = {0, 0, 0};//Positionsbeschreibung in 3Achsen, jeweils 0=Default und 1=Offset
         for(wegLaenge=0;!(pos[0]==1&&pos[1]==1&&pos[2]==1)&&wegLaenge<maxMoves;wegLaenge++)//Bis Ziel Position erreicht (Oder außerhalb des Beobachtungsbereichs)
-        { //3D? wuerfel[1][1][1] != 1
-            bewegung = rand() % 3; // bei 0 Bewegung in 0. Ebene usw. (es gibt je Ebene nur zwei Möglichkeiten)
+        {
+            bewegung = rand() % 3; // bei 0 Bewegung in 0. Ebene usw. (es gibt je Ebene nur zwei Lage Möglichkeiten)
             switch (bewegung)
             {
             case 0:
-                if (pos[0] == 0){ // tauschen der Position in der Ebene
-                    pos[0] = 1;
-                }
-                else{
-                    pos[0] = 0;
-                }
+                pos[0]=!pos[0];// tauschen der Position in der Ebene
                 break;
             case 1:
-                if (pos[1] == 0){
-                    pos[1] = 1;
-                }
-                else{
-                    pos[1] = 0;
-                }
+                pos[1]=!pos[1];
                 break;
             case 2:
-                if (pos[2] == 0){
-                    pos[2] = 1;
-                }
-                else{
-                    pos[2] = 0;
-                }
+                pos[2]=!pos[2];
                 break;
             }
         }
         //printf("w:%d, ",wegLaenge);
-        haeufigkeit[wegLaenge]++;
+        haeufigkeit[wegLaenge]++;//Abspeichern der benötigten Weglänge
     }
-    for(int i=0;i<maxMoves;i++){
+    for(int i=0;i<maxMoves;i++){//
         average+=i*haeufigkeit[i];
     }
     average=1.0*average/anzahl;
-    printf("| Weglaenge| Wieoft |\n+--------------+------------+\n|\t3  | %d |\n|\t5  | %d |\n|\t7  | %d |\n|\t9  | %d |\n|\t11 | %d |\n|\t13 | %d |\n.....................\n|\t83 | %d |\n|\t87 | %d |\nDurchschnittl. Weglaenge: **** %.2f Kanten ****"
-    ,haeufigkeit[3],haeufigkeit[5],haeufigkeit[7],haeufigkeit[9],haeufigkeit[11],haeufigkeit[13],haeufigkeit[83],haeufigkeit[87],average);
+    ausgabe(haeufigkeit, average);
+}
+void ausgabe(int haeufigkeit[], float average){//gibt die benötigte Zuege mit ihrer Häufigkeit aus
+    printf("| Weglaenge|     Wieoft |\n+----------+------------+\n");
+    
+    for(int i = 1; i < maxMoves; i += 2){
+        if(haeufigkeit[i] != 0){
+            printf("| %8d | %10d |\n", i, haeufigkeit[i]);
+        }
+    }
+
+    printf("\tDurchschnittl. Weglaenge:    **** %5.3f Kanten ****\n", average);
 }
