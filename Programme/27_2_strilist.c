@@ -11,7 +11,7 @@ int main()
     char *strichliste[MAX] = {0};
     int zaehler[MAX] = {0};
     char *vergleich[MAX] = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
-    char ersatzString[MAX];
+    //char ersatzString[MAX];
 
     while (fgets(eingabe, ZEICHEN, stdin) != 0) // Eingabe bis EOF = Strg-Z 
     {
