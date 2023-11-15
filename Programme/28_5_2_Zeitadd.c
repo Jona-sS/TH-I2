@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-//LEVIN Ich Sehe Das Du Da Warst!!!
+//LEVIN Ich Sehe Das Du Da Warst!!! (Gruese Stefan)
 struct zeit //Struct anlegen
 {
     int tag;
