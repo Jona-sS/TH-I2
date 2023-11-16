@@ -18,7 +18,7 @@ int main(void)
     char *teiler = ",\n\0";
     // Eingabe:
     printf("Gib Deine Kommazahlen ein (Abschluss mit Leerzeile)\n");
-    while (1)
+    while (1)//nicht noetig wenn man die Eingabe von der Verarbeitung trennt(erst in Array eingeben)
     {
         fgets(eingabeString, 8, stdin); // scanf nicht möglich da \n verarbeitet werden muss
         if (strlen(eingabeString) == 1)
@@ -28,6 +28,7 @@ int main(void)
         nachKommaStr = strtok(NULL, teiler);
         // Strings in Zahlen wandeln:
         zahl.vorK += strtol(vorKommaStr, NULL, 10);
+
         nachKommaZwischenSpeicher = strtol(nachKommaStr, NULL, 10); // führende 0en gehen verloren  
         if (nachKommaZwischenSpeicher)
         {              
@@ -38,7 +39,9 @@ int main(void)
                 zahl.nachK--;
             }
         }
-        // printf("\t-> %d , %f\n",zahl.vorK, zahl.nachK);
     }
-    printf("= %d,%d", zahl.vorK, (int)(zahl.nachK * 10000.0)); // Ausgabe
+    //Ausgabe
+    printf("= %d,", zahl.vorK);
+    for (int i = 1; zahl.nachK*pow(10,i) < 1; i++)printf("0");//Fuehrende Nullen der Nachkommastelle kuenstlich ausgeben
+    printf("%d",(int)(zahl.nachK * 10000.0));
 }

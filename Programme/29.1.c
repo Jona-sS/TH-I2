@@ -24,17 +24,17 @@ enum Lauge{
 #define ANZHAHL_SAEUREN 4
 #define ANZAHL_LAUGEN 3
 int main(){
-    typedef const char vorgabe;
+    typedef const char vorgabe;//Definition von Vorgabe
     vorgabe *mischMatrix[ANZHAHL_SAEUREN][ANZAHL_LAUGEN] ={{"Natriumclorid","Kaliumclorid","Calciumclorid"},{"Natriumsulfat","Kaliumsulfat","Calciumsulfat"},{"Natriumnitrat","Kaliumnitrat","Calciumnitrat"},{"Natriumcarbonat","Kaliumcarbonat","Calciumcarbonat"}};
     vorgabe *sauren[ANZHAHL_SAEUREN] = {"Salzsaure", "Schwefelsaure", "Salpetersaure", "Kohlensaure"};
     vorgabe *laugen[ANZHAHL_SAEUREN] = {"Natronlauge", "Kalilauge", "Kalkwasser"};
     
     printf("\t\t||");
-    for (int i = 0; i < Anzahl_Sauren; i++) {
+    printf(" %16s |", sauren[Salzsaure]);//Aufruf mit enum erhöht die lesbarkeit
+    for (int i = 1; i < Anzahl_Sauren; i++) {
         printf(" %16s |", sauren[i]);
     }
     printf("\n----------------||------------------|------------------|------------------|------------------|\n");
-
     for (int i = 0; i < Anzahl_Laugen; i++) {
         printf("%16s||", laugen[i]);
         for (int j = 0; j < Anzahl_Sauren; j++) {
