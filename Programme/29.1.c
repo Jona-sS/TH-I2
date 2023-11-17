@@ -7,7 +7,7 @@
 //            nutzen um Switch case übersichtlicher zu machen
 //tpedef: Datentyp wird einer Varible zugewiesen/ Defenition umbenenen
 
-enum Saure{
+enum saure{
     Salzsaure,//als Startwert nutzen und bis Anzahl Itterieren und Printen
     Schwefelsaure,
     Salpetersaure,
@@ -15,30 +15,28 @@ enum Saure{
     Anzahl_Sauren
 };
 
-enum Lauge{
+typedef enum {
     Natronlauge,
     Kalilauge,
     Kalkwasser,
-    Anzahl_Laugen//Verwendung bei Deklaration schmweist jedoch Warung weil angeblich veränderbar
-};
-#define ANZHAHL_SAEUREN 4
+    Anzahl_Laugen//Verwendung bei Deklaration schmeist jedoch Warung weil angeblich veränderbar
+}lauge;
+#define ANZAHL_SAEUREN 4
 #define ANZAHL_LAUGEN 3
 int main(){
     typedef const char vorgabe;//Definition von Vorgabe
-    vorgabe *mischMatrix[ANZHAHL_SAEUREN][ANZAHL_LAUGEN] ={{"Natriumclorid","Kaliumclorid","Calciumclorid"},{"Natriumsulfat","Kaliumsulfat","Calciumsulfat"},{"Natriumnitrat","Kaliumnitrat","Calciumnitrat"},{"Natriumcarbonat","Kaliumcarbonat","Calciumcarbonat"}};
-    vorgabe *sauren[ANZHAHL_SAEUREN] = {"Salzsaure", "Schwefelsaure", "Salpetersaure", "Kohlensaure"};
-    vorgabe *laugen[ANZHAHL_SAEUREN] = {"Natronlauge", "Kalilauge", "Kalkwasser"};
-    
+    vorgabe *mischMatrix[ANZAHL_SAEUREN][ANZAHL_LAUGEN] ={{"Natriumclorid","Kaliumclorid","Calciumclorid"},{"Natriumsulfat","Kaliumsulfat","Calciumsulfat"},{"Natriumnitrat","Kaliumnitrat","Calciumnitrat"},{"Natriumcarbonat","Kaliumcarbonat","Calciumcarbonat"}};
+    vorgabe *sauren[ANZAHL_SAEUREN] = {"Salzsaure", "Schwefelsaure", "Salpetersaure", "Kohlensaure"};
+    vorgabe *laugen[ANZAHL_LAUGEN] = {"Natronlauge", "Kalilauge", "Kalkwasser"};
     printf("\t\t||");
-    printf(" %16s |", sauren[Salzsaure]);//Aufruf mit enum erhöht die lesbarkeit
-    for (int i = 1; i < Anzahl_Sauren; i++) {
-        printf(" %16s |", sauren[i]);
+    for (enum saure printSaure = Salzsaure; printSaure < Anzahl_Sauren; printSaure++) {//Aufruf mit enum erhöht die lesbarkeit, hinter Salzsaure steht die 0 =>alternativ int i=0
+        printf(" %16s |", sauren[printSaure]);
     }
     printf("\n----------------||------------------|------------------|------------------|------------------|\n");
-    for (int i = 0; i < Anzahl_Laugen; i++) {
-        printf("%16s||", laugen[i]);
-        for (int j = 0; j < Anzahl_Sauren; j++) {
-            printf(" %16s |", mischMatrix[i][j]);
+    for (lauge printLauge = Natronlauge;printLauge < Anzahl_Laugen; printLauge++) {//typedef bei der enum Beschreibung erspaart das enum in der deklaration
+        printf("%16s||", laugen[printLauge]);
+        for (enum saure printSaure = Salzsaure; printSaure < Anzahl_Sauren; printSaure++) {
+            printf(" %16s |", mischMatrix[printLauge][printSaure]);
         }
         printf("\n");
     }
