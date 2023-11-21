@@ -5,7 +5,7 @@
 #define MAX 100
 #define MAX_GESAMT 200
 
-//LEVIN ICH SEHE DICH !
+//LEVIN ICH SEHE DICH ! GRUSS
 
 struct nameList //Struct erstellt 
 {
