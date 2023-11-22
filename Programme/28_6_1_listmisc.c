@@ -5,7 +5,7 @@
 #define MAX 100
 #define MAX_GESAMT 200
 
-//LEVIN ICH SEHE DICH ! GRUSS
+//LEVIN ICH SEHE DICH !
 
 struct nameList //Struct erstellt 
 {
@@ -57,8 +57,16 @@ void eingabe(struct nameList *ptr, int *list1Anzahl, int *list2Anzahl)
  }
 static int compareName(const void *vergleich1, const void *vergleich2){
 
-    return stricmp(*(char**)vergleich1,*(char**)vergleich2); //char** Zeiger auf die Zeichekentte die verglichen wird Rückgabe 0 bei Gleichheit >0 Zeichen größer, <0 kleiner
+    int ausgabe = stricmp(*(char**)vergleich1,*(char**)vergleich2);  //char** Zeiger auf die Zeichekentte die verglichen wird Rückgabe 0 bei Gleichheit >0 Zeichen größer, <0 kleiner
+    if (ausgabe > 0)
+    {
+        int lengthName1 = strlen(*(char**)vergleich1) +1;   //Laenge deffinieren
+        int lengthName2 = strlen(*(char**)vergleich2) +1;   //Laenge deffinieren
 
+        *(char**)vergleich1 = (char*)realloc( *(char**)vergleich1, lengthName1);   //Deffinieren des neuen Speichers wegen switch
+        *(char**)vergleich2 = (char*)realloc( *(char**)vergleich2, lengthName2);   //Deffinieren des neuen Speichers wegen switch
+    }
+    return ausgabe;
 }
 void listSort(struct nameList *ptr,int List1Anzahl, int List2Anzahl){
 
@@ -108,10 +116,6 @@ int main()
     ausgabe(ptrNamen->list2,list2Anzahl);   // Ausgabe Liste 1
     printf("..... Gemischte Liste.....\n");
     ausgabe(ptrNamen->listEntire,(list1Anzahl+list2Anzahl)); // Ausgabe Liste 1
-
-    //free(ptrNamen->list1);
-    //free(ptrNamen->list2);
-    //free(ptrNamen->listEntire);
 
     return 0;
 }
