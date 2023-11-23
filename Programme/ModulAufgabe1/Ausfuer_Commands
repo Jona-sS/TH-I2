@@ -1,4 +1,0 @@
-Ohne:
-	1. Einzelne Kompilate: gcc -Wall -c name1.c ->.o
-	2. Library erzeugen: ar cr libname.a name1.c name2.o ->.a
-    3.Exe generieren: gcc -Wall -o exename.exe main.c libname.a
