@@ -44,13 +44,13 @@ void eingabe(struct nameList *ptr)
         
         if (listNr == 1)    //Schreiben in die Liste im struct
         {
-            ptr->list1[ptr->list1Anzahl] = (char*)malloc(strlen(input)+1); //Speicher freigeben und /0 (Deshalb +1)
+            ptr->list1[ptr->list1Anzahl] = (char*)malloc((strlen(input)+1)*sizeof(char)); //Speicher freigeben und /0 (Deshalb +1)
             strcpy(ptr->list1[ptr->list1Anzahl],input); //Eingabestring in die Liste copieren
             (ptr->list1Anzahl)++;
         }
         else if (listNr == 2)
         {
-            ptr->list2[ptr->list2Anzahl] = (char*)malloc(strlen(input)+1); //Speicher freigeben und /0 (Deshalb +1)
+            ptr->list2[ptr->list2Anzahl] = (char*)malloc((strlen(input)+1)*sizeof(char)); //Speicher freigeben und /0 (Deshalb +1)
             strcpy(ptr->list2[ptr->list2Anzahl],input); //Eingabestring in die Liste copieren
             (ptr->list2Anzahl)++;
         }
@@ -65,8 +65,8 @@ static int compareName(const void *vergleich1, const void *vergleich2){
         int lengthName1 = strlen(*(char**)vergleich1) +1;   //Laenge deffinieren
         int lengthName2 = strlen(*(char**)vergleich2) +1;   //Laenge deffinieren
 
-        *(char**)vergleich1 = (char*)realloc( *(char**)vergleich1, lengthName1);   //Deffinieren des neuen Speichers wegen switch
-        *(char**)vergleich2 = (char*)realloc( *(char**)vergleich2, lengthName2);   //Deffinieren des neuen Speichers wegen switch
+        *(char**)vergleich1 = (char*)realloc( *(char**)vergleich1, lengthName1*sizeof(char));   //Deffinieren des neuen Speichers wegen switch
+        *(char**)vergleich2 = (char*)realloc( *(char**)vergleich2, lengthName2*sizeof(char));   //Deffinieren des neuen Speichers wegen switch
     }
     return ausgabe;
 }
@@ -80,12 +80,12 @@ void listGesamt(struct nameList *ptr){
 
     for (int i = 0; i < (ptr->list1Anzahl); i++)
     {
-            ptr->listEntire[i] = (char*)malloc(strlen(ptr->list1[i])+1);    //Speicher freigeben und /0 (Deshalb +1)
+            ptr->listEntire[i] = (char*)malloc((strlen(ptr->list1[i])+1)*sizeof(char));    //Speicher freigeben und /0 (Deshalb +1)
             strcpy(ptr->listEntire[i],ptr->list1[i]); //Eingabestring 1 in die Gesamtliste kopieren
     }
     for (int i = 0; i < (ptr->list2Anzahl); i++)
     {
-            ptr->listEntire[(ptr->list1Anzahl)+i] = (char*)malloc(strlen((ptr->list2[i])+1));  //Speicher freigeben und /0 (Deshalb +1)
+            ptr->listEntire[(ptr->list1Anzahl)+i] = (char*)malloc((strlen((ptr->list2[i])+1))*sizeof(char));  //Speicher freigeben und /0 (Deshalb +1)
             strcpy(ptr->listEntire[(ptr->list1Anzahl)+i],ptr->list2[i]); //Eingabestring 2 in die Gesamtliste kopieren
     } 
 }
