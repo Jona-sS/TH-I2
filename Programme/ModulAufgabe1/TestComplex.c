@@ -1,15 +1,15 @@
 /**********************************************************************\
 * Kurzbeschreibung:
-* "Funktionstest" - 2 komplexe Zahlen einlesen 
+* "Funktionstest" - 2 komplexe Zahlen einlesen
 * und alle implementierten Funktionen aus complex.c zum Test aufrufen
-* 
+*
 * Datum:     Autor:
-* 
+*
 *
 \**********************************************************************/
 
 /*--- #includes ------------------------------------------------------*/
-#define _CRT_SECURE_NO_WARNINGS //VC++: keine scanf() Warnungen
+#define _CRT_SECURE_NO_WARNINGS // VC++: keine scanf() Warnungen
 #include <stdio.h>
 #include "complex.h"
 
@@ -20,35 +20,45 @@
 /*--- Modulglobale static Variablen ----------------------------------*/
 
 /*--- Prototypen lokaler Funktionen ----------------------------------*/
-
+Complex eingabe(int zahlNummer);
 /*--- Funktionsdefinitionen ------------------------------------------*/
-
+Complex eingabe(int zahlNummer)
+{
+   Complex e;
+   printf("%d.Zahl eingeben\n        Realteil: ", zahlNummer);
+   while (scanf("%lf", &e.real) != 1)
+   {
+      printf("gib eine Zahl ein: ");
+      while (getchar() != '\n');
+   }
+   printf(" Imaginaeranteil: ");
+   while (scanf("%lf", &e.imag) != 1)
+   {
+      printf("gib eine Zahl ein: ");
+      while (getchar() != '\n');
+   }
+   return e;
+}
 /*--- main -----------------------------------------------------------*/
-int main(void) 
+int main(void)
 {
    // TODO
    Complex x, y;
-   //Eingabe
-   printf("1.Zahl eingeben\n        Realteil: ");
-   scanf("%lf",&x.real);
-   printf(" Imaginaeranteil: ");
-   scanf("%lf",&x.imag);
-   printf("2.Zahl eingeben\n        Realteil: ");
-   scanf("%lf",&y.real);
-   printf(" Imaginaeranteil: ");
-   scanf("%lf",&y.imag);
-   //Augabe der Eingegbenen Zahlen
+   // Eingabe
+   x = eingabe(1);
+   y = eingabe(2);
+   // Augabe der Eingegbenen Zahlen
    printf("\nx = ");
    printComplex(x);
    printf("\ny = ");
    printComplex(y);
-   //Ausgabe und Berechnung
+   // Ausgabe und Berechnung
    printf("\n\nSumme: \t\tx + y = ");
-   printComplex(addComplex(x,y));
+   printComplex(addComplex(x, y));
    printf("\nDifferenz: \tx - y = ");
-   printComplex(subComplex(x,y));
+   printComplex(subComplex(x, y));
    printf("\nProdukt: \tx * y = ");
-   printComplex(mulComplex(x,y));
+   printComplex(mulComplex(x, y));
    printf("\nQuotient: \tx / y = ");
-   printComplex(divComplex(x,y));
+   printComplex(divComplex(x, y));
 }
