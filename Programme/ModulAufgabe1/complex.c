@@ -68,6 +68,11 @@ Complex divComplex(Complex x, Complex y)
 {
    // TODO
    Complex z;
+   if((y.real*y.real+y.imag*y.imag)==0){
+      z.imag=ERROR_C;
+      z.real=ERROR_C;
+      return z;
+   }
    z.real=(x.real*y.real+x.imag*y.imag)/(y.real*y.real+y.imag*y.imag);
    z.imag=(x.imag*y.real-x.real*y.imag)/(y.real*y.real+y.imag*y.imag);
    return z;
