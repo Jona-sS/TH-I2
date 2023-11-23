@@ -18,23 +18,23 @@ struct nameList //Struct erstellt
 
 void eingabe(struct nameList *ptr)
 {
-    int const ZeichenMax = 50;
-    char input[ZeichenMax];
+    int const ZEICHEN_MAX = 50;
+    char input[ZEICHEN_MAX];
     int lenght = 0;
-    ptr->list1Anzahl = 0;
+    ptr->list1Anzahl = 0;//Initialisieren von Strukt Varibalen mit Call by Reffrence
     ptr->list2Anzahl = 0;
     printf("Name (Beenden mit Enter): ");
-    while (fgets(input, ZeichenMax, stdin) != 0 ) // Einlesen des ersten Strings/Namen
+    while (fgets(input, ZEICHEN_MAX, stdin) != 0 ) // Einlesen des ersten Strings/Namen
     {
-        if (strlen(input) == 1 && input[0] == '\n') //Wenn Enter gedrückt wird wird die Eingabe abgebrochen
+        if (strlen(input) == 1 && input[0] == '\n') //Wenn Enter gedrückt wird die Eingabe abgebrochen
             break;
-        
+
         lenght = strlen(input);
         if (input[lenght - 1] == '\n') // Ersetzen des Enterzeichens durch \0
             input[lenght - 1] = '\0';
 
         int listNr = 0;
-        printf("Welche Liste (1 oder 2): "); //Einlesen der Liste
+        printf("Welche Liste (1 oder 2): "); //Einlesen der Listen Nummer
         while (scanf("%d", &listNr) != 1 || (listNr != 1 && listNr != 2))   //Überprufung auf Ungleich 1 und 2
         {
             printf("Falsche Eingabe. Bitte 1 oder 2 wählen: ");
