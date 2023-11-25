@@ -61,7 +61,7 @@ int main(void)
    printf("Delet and Zero(Additionsergebis):\n");
    destroyMatrix(&addM);
    printMatrix(addM);
-   printf("a+b:\n");
+   printf("a*b:\n");
    //Matrizzen Multiplizieren:
    mulM=multMatrix(rMa,rMb);
    printMatrix(mulM);

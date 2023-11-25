@@ -74,7 +74,7 @@ Matrix createMatrixRand(unsigned int spalten, unsigned int zeilen)
    rM.mElement = (MatTyp *)malloc(spalten * zeilen * sizeof(MatTyp));
    for (int i = 0; i < zeilen * spalten; i++)
    {
-      rM.mElement[i] = (rand() % 10) - 5;//anpassbar
+      rM.mElement[i] = (rand() % 200) - 100;//anpassbar
    }
    return rM;
 }
@@ -316,9 +316,9 @@ double determMatrix(const Matrix ma)
          //=> wenn s+i=ma.spalten dann soll s+i(wieder)=0 ==>%3 bei 3x3
       }
       det += produkt;
-      printf("%.1lf+",produkt);
+      //printf("%.1lf+",produkt);
    }
-   printf("=%.1lf\n",det);
+      //printf("=%.1lf\n",det);
    //Schraeg hoch subtrahieren:
    z=ma.zeilen-1;//untere Zeile entlang laufen
    for (s = 0; s < ma.spalten; s++)
@@ -329,8 +329,8 @@ double determMatrix(const Matrix ma)
          produkt*= ma.mElement[(z - i) * ma.spalten + ((s + i)%ma.spalten)];
       }
       det -= produkt;
-      printf("%.1lf-",produkt);
+      //printf("%.1lf-",produkt);
    }
-   printf("=%.1lf\n",det);
+      //printf("=%.1lf\n",det);
    return det;
 }
