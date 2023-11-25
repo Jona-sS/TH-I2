@@ -53,16 +53,16 @@ int main(void)
    printf("\na+b=\n");
    addM=addMatrix(rMa,rMb);
    printMatrix(addM);
-   //einen Wert Setzen:
-   printf("Setze Wert(in b):\n");
-   setEntryAt(&rMb,1,1,99);
-   printMatrix(rMb);
    //Matrizze loeschen und auf Null:
    printf("Delet and Zero(Additionsergebis):\n");
    destroyMatrix(&addM);
    printMatrix(addM);
-   printf("a*b:\n");
+   //einen Wert Setzen:
+   printf("Setze Wert(in b):\n");
+   setEntryAt(&rMb,1,1,99);
+   printMatrix(rMb);
    //Matrizzen Multiplizieren:
+   printf("a*b:\n");
    mulM=multMatrix(rMa,rMb);
    printMatrix(mulM);
    //Matrizze transponieren:
