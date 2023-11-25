@@ -35,7 +35,7 @@ typedef int Bool;
 * Erstellt eine neue Matrix (cM)
 *  - reserviert lediglich den notwendigen Speicher
 *  - dynamische Verwaltung von Speicher muss mit malloc() und free() 
-*    durchgeführt werden; dynamische Arrays sind nicht erlaubt !!!
+*    durchgefï¿½hrt werden; dynamische Arrays sind nicht erlaubt !!!
 \*--------------------------------------------------------------------*/
 Matrix createMatrix(unsigned int spalten, unsigned int zeilen);
 
@@ -82,7 +82,7 @@ MatTyp getEntryAt(const Matrix ma, unsigned int xPos, unsigned int yPos);
 * Setzt den Eintrag der Matrix an der Stelle (xPos, yPos) (sE)
 * Rueckgabe: TRUE, im Fehlerfall: FALSE
 \*--------------------------------------------------------------------*/
-Bool setEntryAt(Matrix ma, unsigned int xPos, unsigned int yPos, MatTyp value);
+Bool setEntryAt(Matrix *ma, unsigned int xPos, unsigned int yPos, MatTyp value);
 
 /*--------------------------------------------------------------------*\
 * Gibt eine Matrix im Kommandofenster "schoen formatiert" aus (pM)
