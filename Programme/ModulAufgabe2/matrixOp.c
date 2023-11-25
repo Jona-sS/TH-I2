@@ -313,7 +313,7 @@ double determMatrix(const Matrix ma)
       for (int i = 0; i < ma.spalten; i++)
       {
          produkt*= ma.mElement[(z + i) * ma.spalten + ((s + i)%ma.spalten)];//Problem Ueberlaf da Matrix erweitert werden muss
-         //=> wenn s+i=ma.spalten dann soll s+i(wieder)=0 ==>%3
+         //=> wenn s+i=ma.spalten dann soll s+i(wieder)=0 ==>%3 bei 3x3
       }
       det += produkt;
       printf("%.1lf+",produkt);
