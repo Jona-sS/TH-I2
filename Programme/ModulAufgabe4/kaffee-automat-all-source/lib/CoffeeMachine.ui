@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CoffeeMachine</class>
+ <widget class="QWidget" name="CoffeeMachine">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>880</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>700</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="margin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QScrollArea" name="scrollArea">
+     <property name="palette">
+      <palette>
+       <active>
+        <colorrole role="Base">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="Window">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>194</red>
+           <green>225</green>
+           <blue>244</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </active>
+       <inactive>
+        <colorrole role="Base">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="Window">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>194</red>
+           <green>225</green>
+           <blue>244</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </inactive>
+       <disabled>
+        <colorrole role="Base">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>194</red>
+           <green>225</green>
+           <blue>244</blue>
+          </color>
+         </brush>
+        </colorrole>
+        <colorrole role="Window">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>194</red>
+           <green>225</green>
+           <blue>244</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </disabled>
+      </palette>
+     </property>
+     <property name="autoFillBackground">
+      <bool>true</bool>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="lineWidth">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="scrollAreaWidgetContents">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>880</width>
+        <height>600</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>880</width>
+        <height>600</height>
+       </size>
+      </property>
+      <widget class="QLabel" name="machine">
+       <property name="geometry">
+        <rect>
+         <x>460</x>
+         <y>86</y>
+         <width>371</width>
+         <height>451</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap resource="resource.qrc">:/coffee/Coffee_machine</pixmap>
+       </property>
+      </widget>
+      <widget class="QLabel" name="plate">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>439</y>
+         <width>321</width>
+         <height>101</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap resource="resource.qrc">:/coffee/Coffee_plate</pixmap>
+       </property>
+      </widget>
+      <widget class="QLabel" name="euro_1">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>59</y>
+         <width>100</width>
+         <height>98</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap>:/coffee/1_euro</pixmap>
+       </property>
+      </widget>
+      <widget class="QLabel" name="euro_2">
+       <property name="geometry">
+        <rect>
+         <x>140</x>
+         <y>59</y>
+         <width>100</width>
+         <height>100</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap>:/coffee/2_euro</pixmap>
+       </property>
+      </widget>
+      <widget class="QLabel" name="coin_out">
+       <property name="geometry">
+        <rect>
+         <x>400</x>
+         <y>480</y>
+         <width>110</width>
+         <height>110</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLabel" name="can_on_plate">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>320</y>
+         <width>179</width>
+         <height>189</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap resource="resource.qrc">:/coffee/Can_empty</pixmap>
+       </property>
+      </widget>
+      <widget class="QLabel" name="light_on_money">
+       <property name="geometry">
+        <rect>
+         <x>483</x>
+         <y>100</y>
+         <width>111</width>
+         <height>81</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap resource="resource.qrc">:/coffee/light_money</pixmap>
+       </property>
+      </widget>
+      <widget class="QLabel" name="light_on_can">
+       <property name="geometry">
+        <rect>
+         <x>520</x>
+         <y>259</y>
+         <width>371</width>
+         <height>281</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap resource="resource.qrc">:/coffee/light_can</pixmap>
+       </property>
+      </widget>
+      <widget class="QLabel" name="can_in_machine">
+       <property name="geometry">
+        <rect>
+         <x>575</x>
+         <y>320</y>
+         <width>179</width>
+         <height>189</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap resource="resource.qrc">:/coffee/Can_empty</pixmap>
+       </property>
+      </widget>
+      <widget class="QLabel" name="filled_can_in_machine">
+       <property name="geometry">
+        <rect>
+         <x>575</x>
+         <y>320</y>
+         <width>179</width>
+         <height>189</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap resource="resource.qrc">:/coffee/Can_filled</pixmap>
+       </property>
+      </widget>
+      <widget class="QLabel" name="coffee_splat">
+       <property name="geometry">
+        <rect>
+         <x>580</x>
+         <y>369</y>
+         <width>221</width>
+         <height>211</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap resource="resource.qrc">:/coffee/Coffee_splat</pixmap>
+       </property>
+      </widget>
+      <widget class="MousePressForwarding" name="drop_on_plate" native="true">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>239</y>
+         <width>331</width>
+         <height>271</height>
+        </rect>
+       </property>
+       <property name="acceptDrops">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="MousePressForwarding" name="drop_on_machine" native="true">
+       <property name="geometry">
+        <rect>
+         <x>560</x>
+         <y>259</y>
+         <width>301</width>
+         <height>251</height>
+        </rect>
+       </property>
+       <property name="acceptDrops">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QWidget" name="drop_money" native="true">
+       <property name="geometry">
+        <rect>
+         <x>480</x>
+         <y>99</y>
+         <width>101</width>
+         <height>101</height>
+        </rect>
+       </property>
+       <property name="acceptDrops">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLCDNumber" name="money_number">
+       <property name="geometry">
+        <rect>
+         <x>650</x>
+         <y>150</y>
+         <width>149</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="palette">
+        <palette>
+         <active>
+          <colorrole role="WindowText">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
+             <red>202</red>
+             <green>0</green>
+             <blue>3</blue>
+            </color>
+           </brush>
+          </colorrole>
+         </active>
+         <inactive>
+          <colorrole role="WindowText">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
+             <red>202</red>
+             <green>0</green>
+             <blue>3</blue>
+            </color>
+           </brush>
+          </colorrole>
+         </inactive>
+         <disabled>
+          <colorrole role="WindowText">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
+             <red>123</red>
+             <green>123</green>
+             <blue>123</blue>
+            </color>
+           </brush>
+          </colorrole>
+         </disabled>
+        </palette>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::NoFrame</enum>
+       </property>
+       <property name="segmentStyle">
+        <enum>QLCDNumber::Flat</enum>
+       </property>
+      </widget>
+      <widget class="QFrame" name="frame">
+       <property name="geometry">
+        <rect>
+         <x>500</x>
+         <y>10</y>
+         <width>351</width>
+         <height>61</height>
+        </rect>
+       </property>
+       <property name="palette">
+        <palette>
+         <active>
+          <colorrole role="Base">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
+             <red>255</red>
+             <green>255</green>
+             <blue>255</blue>
+            </color>
+           </brush>
+          </colorrole>
+          <colorrole role="Window">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
+             <red>255</red>
+             <green>255</green>
+             <blue>255</blue>
+            </color>
+           </brush>
+          </colorrole>
+         </active>
+         <inactive>
+          <colorrole role="Base">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
+             <red>255</red>
+             <green>255</green>
+             <blue>255</blue>
+            </color>
+           </brush>
+          </colorrole>
+          <colorrole role="Window">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
+             <red>255</red>
+             <green>255</green>
+             <blue>255</blue>
+            </color>
+           </brush>
+          </colorrole>
+         </inactive>
+         <disabled>
+          <colorrole role="Base">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
+             <red>255</red>
+             <green>255</green>
+             <blue>255</blue>
+            </color>
+           </brush>
+          </colorrole>
+          <colorrole role="Window">
+           <brush brushstyle="SolidPattern">
+            <color alpha="255">
+             <red>255</red>
+             <green>255</green>
+             <blue>255</blue>
+            </color>
+           </brush>
+          </colorrole>
+         </disabled>
+        </palette>
+       </property>
+       <property name="autoFillBackground">
+        <bool>true</bool>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::WinPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <property name="lineWidth">
+        <number>10</number>
+       </property>
+       <property name="midLineWidth">
+        <number>11</number>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QLabel" name="display_label">
+          <property name="font">
+           <font>
+            <pointsize>16</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>MousePressForwarding</class>
+   <extends>QWidget</extends>
+   <header>MousePressForwarding.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="resource.qrc"/>
+ </resources>
+ <connections/>
+</ui>
