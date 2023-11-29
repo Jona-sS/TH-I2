@@ -98,7 +98,8 @@ static const fsm_state_t s_transitions_G[] =
     {/*    input   mask      nxtstate */
      /* TODO   */
      {0x004, ~0x000, H},
-     {0x006, ~0x001, G}};
+     {0x006, ~0x001, G},
+     {0,~0x005,F}};
 
 
 static const fsm_state_t s_transitions_H[] =
@@ -248,6 +249,13 @@ void automat_transition(BOOL becher, BOOL muenze, BOOL muenz_wert)
     if ((ev & s_transitions_G[0].mask) == s_transitions_G[0].input)
     {
       s_curstate = s_transitions_G[0].nxtstate;
+    }else if ((ev & s_transitions_G[1].mask) == s_transitions_G[1].input)
+    {
+      s_curstate = s_transitions_G[1].nxtstate;
+    }
+    else if ((ev & s_transitions_G[2].mask) == s_transitions_G[2].input)
+    {
+      s_curstate = s_transitions_G[2].nxtstate;
     }
     break;
   case H:
