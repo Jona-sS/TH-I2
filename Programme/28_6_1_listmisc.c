@@ -5,6 +5,7 @@
 #define MAX 100
 #define MAX_GESAMT 200
 
+//LEVIN ICH SEHE DICH !
 
 struct nameList //Struct erstellt 
 {
@@ -15,28 +16,28 @@ struct nameList //Struct erstellt
     int list2Anzahl;
 };
 
-void eingabe(struct nameList *ptr)
+void eingabe(struct nameList *ptr)//Strukt wird als Pointer übegeben
 {
-    int const ZeichenMax = 50;
-    char input[ZeichenMax];
+    int const ZEICHEN_MAX = 50;
+    char input[ZEICHEN_MAX];
     int lenght = 0;
-    ptr->list1Anzahl = 0;
+    ptr->list1Anzahl = 0;//Initialisieren von Strukt Varibalen mit Call by Reffrence
     ptr->list2Anzahl = 0;
     printf("Name (Beenden mit Enter): ");
-    while (fgets(input, ZeichenMax, stdin) != 0 ) // Einlesen des ersten Strings/Namen
+    while (fgets(input, ZEICHEN_MAX, stdin) != 0 ) // Einlesen des ersten Strings/Namen
     {
-        if (strlen(input) == 1 && input[0] == '\n') //Wenn Enter gedrückt wird wird die Eingabe abgebrochen
+        if (strlen(input) == 1 && input[0] == '\n') //Wenn Enter gedrückt wird die Eingabe abgebrochen
             break;
-        
+
         lenght = strlen(input);
         if (input[lenght - 1] == '\n') // Ersetzen des Enterzeichens durch \0
             input[lenght - 1] = '\0';
 
         int listNr = 0;
-        printf("Welche Liste (1 oder 2): "); //Einlesen der Liste
+        printf("Welche Liste (1 oder 2): "); //Einlesen der Listen Nummer
         while (scanf("%d", &listNr) != 1 || (listNr != 1 && listNr != 2))   //Überprufung auf Ungleich 1 und 2
         {
-            printf("Falsche Eingabe. Bitte 1 oder 2 wählen: ");
+            printf("Falsche Eingabe. Bitte 1 oder 2 waehlen: ");
             while (getchar() != '\n');
         }
         while (getchar() != '\n'); //Löschen des Enterzeichens im Eingabepuffer
@@ -56,11 +57,11 @@ void eingabe(struct nameList *ptr)
         printf("Name (Beenden mit Enter): ");
     }
  }
-static int compareName(const void *vergleich1, const void *vergleich2){
+static int compareName(const void *vergleich1, const void *vergleich2){//Sortier Hilfsfunktion
 
     int ausgabe = stricmp(*(char**)vergleich1,*(char**)vergleich2);  //char** Zeiger auf die Zeichekentte die verglichen wird Rückgabe 0 bei Gleichheit >0 Zeichen größer, <0 kleiner
     if (ausgabe > 0)
-    {
+    {//Speicherplatz für das Tauschen umverteilen
         int lengthName1 = strlen(*(char**)vergleich1) +1;   //Laenge deffinieren
         int lengthName2 = strlen(*(char**)vergleich2) +1;   //Laenge deffinieren
 
@@ -75,7 +76,7 @@ void listSort(struct nameList *ptr){
     qsort(ptr->list2,(ptr->list2Anzahl),sizeof(ptr->list2[0]),compareName);
     qsort(ptr->listEntire,(ptr->list1Anzahl)+(ptr->list2Anzahl),sizeof(ptr->listEntire[0]),compareName);
 }
-void listGesamt(struct nameList *ptr){
+void listGesamt(struct nameList *ptr){//kombiniert beide Listen in eine sortierte
 
     for (int i = 0; i < (ptr->list1Anzahl); i++)
     {
@@ -101,7 +102,7 @@ int main()
 {
     struct nameList Namen; //struct Liste mit dem Namen Namen erstellt 
     struct nameList *ptrNamen; // Pointer auf den Struct erstellt
-
+    
     ptrNamen = &Namen; // Zeiger auf das Struct Namen intitialisiert
 
     // Eingabe der Namen und schreiben in Liste 1 und 2
