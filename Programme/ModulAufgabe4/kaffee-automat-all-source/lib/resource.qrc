@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/coffee">
+        <file alias="Coffee_plate">resources/Coffee_plate.png</file>
+        <file alias="Coffee_machine">resources/Coffee_machine.png</file>
+        <file alias="2_euro.png">resources/2_euro.png</file>
+        <file alias="1_euro.png">resources/1_euro.png</file>
+        <file alias="Can_filled">resources/Can_filled.png</file>
+        <file alias="Can_empty">resources/Can_empty.png</file>
+        <file alias="light_can">resources/light_can.png</file>
+        <file alias="light_money">resources/light_money.png</file>
+        <file alias="Coffee_splat">resources/Coffee_splat.png</file>
+        <file alias="spider_web">resources/spider_web.png</file>
+    </qresource>
+</RCC>
