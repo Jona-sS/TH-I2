@@ -1,7 +1,7 @@
 /**********************************************************************\
  * Kurzbeschreibung: automat.c
- * Stellt Funktionen zur Realisierung eines Automaten zur Verfügung,  
- * die über die in der automat.h vorgegebene C-Schnittstelle 
+ * Stellt Funktionen zur Realisierung eines Automaten zur Verfï¿½gung,  
+ * die ï¿½ber die in der automat.h vorgegebene C-Schnittstelle 
  * mit einer grafischen Schnittstelle kommunizieren. 
  *
  * Datum:       Autor:        Grund der Aenderung:
@@ -120,7 +120,12 @@ static const fsm_action_t s_out_table[NR_OF_STATES] =
     {   false,       false,       false,          0,          "Warten" },    /* state A */
     {   false,       false,       false,          1,          "1 Euro" },    /* state B */
     {   false,       false,       false,          2,          "2 Euro" },    /* state C */
-    {   false,       false,       false,          3,          "3 Euro" }     /* state D */
+    {   false,       false,       false,          3,          "3 Euro" },    /* state D */
+    {   false,        true,       false,          3,          "3 Euro" },    /* state E */
+    {    true,       false,       false,          4,          "3 Euro" },    /* state F */
+    {    true,        true,       false,          4,          "3 Euro" },    /* state G */
+    {   false,       false,        true,          0,          "3 Euro" },    /* state H */
+    {   false,        true,        true,          0,          "3 Euro" },    /* state I */
     /* TODO   */
     /* {    } */
 };
