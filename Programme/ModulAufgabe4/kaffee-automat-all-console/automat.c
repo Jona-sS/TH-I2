@@ -91,13 +91,15 @@ static const fsm_state_t s_transitions_F[] =
         /*    input   mask      nxtstate */
         /* TODO   */
         {0x004, ~0x000, H},
-        {0x002, ~0x001, G},
-};
+        {0x002, ~0x001, G}};
+
 
 static const fsm_state_t s_transitions_G[] =
     {/*    input   mask      nxtstate */
      /* TODO   */
-     {0x004, 0, H}};
+     {0x004, ~0x000, H},
+     {0x006, ~0x001, G}};
+
 
 static const fsm_state_t s_transitions_H[] =
     {/*    input   mask      nxtstate */
@@ -171,95 +173,95 @@ void automat_transition(BOOL becher, BOOL muenze, BOOL muenz_wert)
   switch (s_curstate)
   {
   case A:
-    if (ev & s_transitions_A[0].mask == s_transitions_A[0].input)
+    if ((ev & s_transitions_A[0].mask) == s_transitions_A[0].input)
     {
       s_curstate = s_transitions_A[0].nxtstate;
     }
-    else if (ev & s_transitions_A[1].mask == s_transitions_A[1].input)
+    else if ((ev & s_transitions_A[1].mask) == s_transitions_A[1].input)
     {
       s_curstate = s_transitions_A[1].nxtstate;
     }
     break;
   case B:
-    if (ev & s_transitions_B[0].mask == s_transitions_B[0].input)
+    if ((ev & s_transitions_B[0].mask) == s_transitions_B[0].input)
     {
       s_curstate = s_transitions_B[0].nxtstate;
     }
-    else if (ev & s_transitions_B[1].mask == s_transitions_B[1].input)
+    else if ((ev & s_transitions_B[1].mask) == s_transitions_B[1].input)
     {
       s_curstate = s_transitions_B[1].nxtstate;
     }
     break;
   case C:
-    if (ev & s_transitions_C[0].mask == s_transitions_C[0].input)
+    if ((ev & s_transitions_C[0].mask) == s_transitions_C[0].input)
     {
       s_curstate = s_transitions_C[0].nxtstate;
     }
-    else if (ev & s_transitions_C[1].mask == s_transitions_C[1].input)
+    else if ((ev & s_transitions_C[1].mask) == s_transitions_C[1].input)
     {
       s_curstate = s_transitions_C[1].nxtstate;
     }
-    else if (ev & s_transitions_C[2].mask == s_transitions_C[2].input)
+    else if ((ev & s_transitions_C[2].mask) == s_transitions_C[2].input)
     {
       s_curstate = s_transitions_C[2].nxtstate;
     }
     break;
   case D:
-    if (ev & s_transitions_D[0].mask == s_transitions_D[0].input)
+    if ((ev & s_transitions_D[0].mask) == s_transitions_D[0].input)
     {
       s_curstate = s_transitions_D[0].nxtstate;
     }
-    else if (ev & s_transitions_D[1].mask == s_transitions_D[1].input)
+    else if ((ev & s_transitions_D[1].mask) == s_transitions_D[1].input)
     {
       s_curstate = s_transitions_D[1].nxtstate;
     }
-    else if (ev & s_transitions_D[2].mask == s_transitions_D[2].input)
+    else if ((ev & s_transitions_D[2].mask) == s_transitions_D[2].input)
     {
       s_curstate = s_transitions_D[2].nxtstate;
     }
     break;
   case E:
-    if (ev & s_transitions_E[0].mask == s_transitions_E[0].input)
+    if ((ev & s_transitions_E[0].mask) == s_transitions_E[0].input)
     {
       s_curstate = s_transitions_E[0].nxtstate;
     }
-    else if (ev & s_transitions_E[1].mask == s_transitions_E[1].input)
+    else if ((ev & s_transitions_E[1].mask) == s_transitions_E[1].input)
     {
       s_curstate = s_transitions_E[1].nxtstate;
     }
-    else if (ev & s_transitions_E[2].mask == s_transitions_E[2].input)
+    else if ((ev & s_transitions_E[2].mask) == s_transitions_E[2].input)
     {
       s_curstate = s_transitions_E[2].nxtstate;
     }
     break;
   case F:
-    if (ev & s_transitions_F[0].mask == s_transitions_F[0].input)
+    if ((ev & s_transitions_F[0].mask) == s_transitions_F[0].input)
     {
       s_curstate = s_transitions_F[0].nxtstate;
     }
-    else if (ev & s_transitions_F[1].mask == s_transitions_F[1].input)
+    else if ((ev & s_transitions_F[1].mask) == s_transitions_F[1].input)
     {
       s_curstate = s_transitions_F[1].nxtstate;
     }
     break;
   case G:
-    if (ev & s_transitions_G[0].mask == s_transitions_G[0].input)
+    if ((ev & s_transitions_G[0].mask) == s_transitions_G[0].input)
     {
       s_curstate = s_transitions_G[0].nxtstate;
     }
     break;
   case H:
-    if (ev & s_transitions_H[0].mask == s_transitions_H[0].input)
+    if ((ev & s_transitions_H[0].mask) == s_transitions_H[0].input)
     {
       s_curstate = s_transitions_H[0].nxtstate;
     }
-    else if (ev & s_transitions_H[1].mask == s_transitions_H[1].input)
+    else if ((ev & s_transitions_H[1].mask) == s_transitions_H[1].input)
     {
       s_curstate = s_transitions_H[1].nxtstate;
     }
     break;
   case I:
-    if (ev & s_transitions_I[0].mask == s_transitions_I[0].input)
+    if ((ev & s_transitions_I[0].mask) == s_transitions_I[0].input)
     {
       s_curstate = s_transitions_I[0].nxtstate;
     }
