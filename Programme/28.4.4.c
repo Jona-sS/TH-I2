@@ -10,6 +10,7 @@ typedef struct{
     char *vorname;
     int note;
 }Student;
+
 int eingabe(int nr, Student *student){
     student->name = malloc(10 * sizeof(char));
     student->vorname = malloc(10 * sizeof(char));
@@ -40,16 +41,18 @@ int main(){
     klasse=(Student *)malloc(sizeof(Student));
     //Eingabe:
     while(eingabe(nr,&klasse[nr])){
-        klasse = (Student *)realloc(klasse,sizeof(Student)*(nr+2));//Speicher fuer eingegebenen Studenten alokieren
+        klasse = (Student *)realloc(klasse,sizeof(Student)*(nr+2));//Speicher fuer naechsten Studenten alokieren
         nr++;
     }
     //Auswertung:
     printf("\t\tName\t\t, Vorname\t\t, Note\n-----------------------------------------------------------------------------\n");
+    //Druchschnitt ermitteln:
     for(int i=0;i<nr;i++){
         printf("%6d. \t%s\t\t, %s\t\t,  %d\n",i+1,klasse[i].name,klasse[i].vorname,klasse[i].note);
         durchschnitt+=klasse[i].note;
     }
     printf("\n....Druchschnittsnote: %.2f",durchschnitt/nr);
+    //Notenverteilungs Statistik:
     printf("\n....Notenspiegel");
     for (int n = 1; n <= 6; n++)
     {
@@ -60,5 +63,4 @@ int main(){
             printf("*");
         }
     }
-    
 }
