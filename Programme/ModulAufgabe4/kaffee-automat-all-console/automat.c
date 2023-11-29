@@ -97,9 +97,7 @@ static const fsm_state_t s_transitions_F[] =
 static const fsm_state_t s_transitions_G[] =
     {/*    input   mask      nxtstate */
      /* TODO   */
-     {0x004, ~0x000, H},
-     {0x006, ~0x001, G}};
-
+     {0x004, 0, H}};
 
 static const fsm_state_t s_transitions_H[] =
     {/*    input   mask      nxtstate */
