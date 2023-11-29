@@ -83,35 +83,44 @@ static const fsm_state_t s_transitions_E[] =
     {/*    input   mask      nxtstate */
      /* TODO   */
      {0x002, ~0x000, F},
-     {0x002, ~0x000, H},
+     {0x006, ~0x000, H},
      {0x000, ~0x005, D}};
 
 static const fsm_state_t s_transitions_F[] =
     {
         /*    input   mask      nxtstate */
         /* TODO   */
-        {0x004, ~0x000, H},
-        {0x002, ~0x001, G}};
+        {0x004, ~0x001, H},
+        {0x002, ~0x001, G},
+        {0x006, ~0x001, I}
+        };
 
 
 static const fsm_state_t s_transitions_G[] =
     {/*    input   mask      nxtstate */
      /* TODO   */
-     {0x004, ~0x000, H},
-     {0x006, ~0x001, G},
+     {0x004, ~0x001, H},
+     {0x006, ~0x001, I},
      {0,~0x005,F}};
 
 
 static const fsm_state_t s_transitions_H[] =
     {/*    input   mask      nxtstate */
      /* TODO   */
-     {0, ~0x003, A},
-     {0x002, ~0x005, I}};
+     {0, ~0x001, A},
+     {0x006, ~0x001, I},
+     {0x002, ~0x000, B},
+     {0x003, ~0x000, C}
+     };
 
 static const fsm_state_t s_transitions_I[] =
     {/*    input   mask      nxtstate */
      /* TODO   */
-     {0, ~0x003, A}};
+     {0, ~0x001, A},
+     {0x002, ~0x000, B},
+     {0x003, ~0x000 , C},
+     {0x004, ~0x001 , H}
+     };
 
 /* Definition der Uebergangstabelle */
 /* Die Reihenfolge der Zustaende in der enum Definition muss der
@@ -145,8 +154,8 @@ static const fsm_action_t s_out_table[NR_OF_STATES] =
         {false, true, false, 3, "3 Euro"},                 /* state E */
         {true, false, false, 4, "4 Euro"},                 /* state F */
         {true, true, false, 4, "4 Euro"},                  /* state G */
-        {false, false, true, 0, "Kaffee wird zubereitet"}, /* state H */
-        {false, true, true, 0, "Kaffee wird zubereitet"}   /* state I */
+        {true, false, true, 0, "Kaffee wird zubereitet"}, /* state H */
+        {true, true, true, 0, "Kaffee wird zubereitet"}   /* state I */
 
         /* {    } */
 };
@@ -244,6 +253,10 @@ void automat_transition(BOOL becher, BOOL muenze, BOOL muenz_wert)
     {
       s_curstate = s_transitions_F[1].nxtstate;
     }
+    else if ((ev & s_transitions_F[2].mask) == s_transitions_F[2].input)
+    {
+      s_curstate = s_transitions_F[2].nxtstate;
+    }
     break;
   case G:
     if ((ev & s_transitions_G[0].mask) == s_transitions_G[0].input)
@@ -266,12 +279,27 @@ void automat_transition(BOOL becher, BOOL muenze, BOOL muenz_wert)
     else if ((ev & s_transitions_H[1].mask) == s_transitions_H[1].input)
     {
       s_curstate = s_transitions_H[1].nxtstate;
+    }    else if ((ev & s_transitions_H[2].mask) == s_transitions_H[2].input)
+    {
+      s_curstate = s_transitions_H[2].nxtstate;
+    }    else if ((ev & s_transitions_H[3].mask) == s_transitions_H[3].input)
+    {
+      s_curstate = s_transitions_H[3].nxtstate;
     }
     break;
   case I:
     if ((ev & s_transitions_I[0].mask) == s_transitions_I[0].input)
     {
       s_curstate = s_transitions_I[0].nxtstate;
+    }else  if ((ev & s_transitions_I[1].mask) == s_transitions_I[1].input)
+    {
+      s_curstate = s_transitions_I[1].nxtstate;
+    }else  if ((ev & s_transitions_I[2].mask) == s_transitions_I[2].input)
+    {
+      s_curstate = s_transitions_I[2].nxtstate;
+    }else  if ((ev & s_transitions_I[3].mask) == s_transitions_I[3].input)
+    {
+      s_curstate = s_transitions_I[3].nxtstate;
     }
     break;
   }
