@@ -145,6 +145,8 @@ void automat_reset(void)
 {
     printf("---- automat_reset ----\n");
     /* TODO go into IDLE state */
+    s_curstate=A;
+    automat_output();//evtl unnoetig
 }
 
 /*--- Funktionsdefinition --------------------------------------------*/
@@ -153,6 +155,7 @@ void automat_transition(BOOL becher, BOOL muenze, BOOL muenz_wert)
     printf("---- automat_transition becher(%0d) muenze(%0d) muenz_wert(%0d) ----\n",
            becher, muenze, muenz_wert);
     /* TODO do automat transitions */
+  
 }
 
 /*--- Funktionsdefinition --------------------------------------------*/
