@@ -1,11 +1,11 @@
 /**********************************************************************\
  * Kurzbeschreibung: automat.c
- * Stellt Funktionen zur Realisierung eines Automaten zur Verf�gung,  
- * die �ber die in der automat.h vorgegebene C-Schnittstelle 
- * mit einer grafischen Schnittstelle kommunizieren. 
+ * Stellt Funktionen zur Realisierung eines Automaten zur Verf�gung,
+ * die �ber die in der automat.h vorgegebene C-Schnittstelle
+ * mit einer grafischen Schnittstelle kommunizieren.
  *
  * Datum:       Autor:        Grund der Aenderung:
- * 
+ *
  *
 \**********************************************************************/
 #include <stdio.h>
@@ -14,27 +14,40 @@
 
 /*--- #defines -------------------------------------------------------*/
 /* Macro zur Ermittlung der Array Groesse */
-#define SIZE_OF(a) (sizeof((a))/ sizeof(*(a)))
+#define SIZE_OF(a) (sizeof((a)) / sizeof(*(a)))
 
-#define NR_OF_STATES        (I-A + 1)
+#define NR_OF_STATES (I - A + 1)
 
 /*--- Datentypen (typedef) -------------------------------------------*/
 /* Definition der Zustaende */
-typedef enum {A=0,B,C,D,E,F,G,H,I} state_t; 
+typedef enum
+{
+  A = 0,
+  B,
+  C,
+  D,
+  E,
+  F,
+  G,
+  H,
+  I
+} state_t;
 
 /* Definition der fsm-spezifischen Variablen */
 /* Struktur zur Beschreibung eines Uebergangs mit "Don't Care"-Moeglichkeit */
-typedef struct {
-    int       input;
-    int       mask;
-    state_t   nxtstate;
+typedef struct
+{
+  int input;
+  int mask;
+  state_t nxtstate;
 } fsm_state_t;
 
 /* Struktur zur Beschreibung aller Uebergaenge eines Zustands */
-typedef struct {
-    const fsm_state_t * transitions;
-    int                 nrOfTransitions;
-    state_t             defaultNxtState;
+typedef struct
+{
+  const fsm_state_t *transitions;
+  int nrOfTransitions;
+  state_t defaultNxtState;
 } fsm_full_state_t;
 
 /*--- Modulglobale static Variablen ----------------------------------*/
@@ -43,123 +56,219 @@ static state_t s_curstate = A; /* Initialisierung */
 
 /* Definition aller Zustandsuebergaenge fuer jeden Zustand */
 static const fsm_state_t s_transitions_A[] =
-{ /*    input   mask      nxtstate */
-  {     0x002,  ~0x004,   B },
-  {     0x003,  ~0x004,   C }//Transitionsbedingungen um von A nach C zu kommen -11 wobei ~0x004 den 3. bit raus nimmt 
+    {
+        /*    input   mask      nxtstate */
+        {0x002, ~0x004, B},
+        {0x003, ~0x004, C} // Transitionsbedingungen um von A nach C zu kommen -11 wobei ~0x004 den 3. bit raus nimmt
 };
 
 static const fsm_state_t s_transitions_B[] =
-{ /*    input   mask      nxtstate */
-  {     0x002,  ~0x004,   C },
-  {     0x003,  ~0x004,   D }
-};
+    {/*    input   mask      nxtstate */
+     {0x002, ~0x004, C},
+     {0x003, ~0x004, D}};
 
 static const fsm_state_t s_transitions_C[] =
-{ /*    input   mask      nxtstate */
-  {     0x002,  ~0x004,   D },
-  {     0x003,  ~0x000,   F },
-  {     0x007,  ~0x000,   H }
-};
+    {/*    input   mask      nxtstate */
+     {0x002, ~0x004, D},
+     {0x003, ~0x000, F},
+     {0x007, ~0x000, H}};
 
 static const fsm_state_t s_transitions_D[] =
-{ /*    input   mask      nxtstate */
-  {     0x002,  ~0x000,   F },
-  {     0x003,  ~0x004,   E },
-  {     0x006,  ~0x000,   H }
-};
+    {/*    input   mask      nxtstate */
+     {0x002, ~0x000, F},
+     {0x003, ~0x004, E},
+     {0x006, ~0x000, H}};
 
 static const fsm_state_t s_transitions_E[] =
-{ /*    input   mask      nxtstate */
-  /* TODO   */
-  { 0x002, ~0x000, F },
-  { 0x002, ~0x000, H },
-  { 0x000, ~0x005, D }
-};
+    {/*    input   mask      nxtstate */
+     /* TODO   */
+     {0x002, ~0x000, F},
+     {0x002, ~0x000, H},
+     {0x000, ~0x005, D}};
 
 static const fsm_state_t s_transitions_F[] =
-{ /*    input   mask      nxtstate */
-  /* TODO   */
-  { 0x004, ~0x000, H },
-  { 0x002, ~0x001, G },
+    {
+        /*    input   mask      nxtstate */
+        /* TODO   */
+        {0x004, ~0x000, H},
+        {0x002, ~0x001, G},
 };
 
 static const fsm_state_t s_transitions_G[] =
-{ /*    input   mask      nxtstate */
-  /* TODO   */
-  { 0x004, 0, H }
-};
+    {/*    input   mask      nxtstate */
+     /* TODO   */
+     {0x004, 0, H}};
 
 static const fsm_state_t s_transitions_H[] =
-{ /*    input   mask      nxtstate */
-  /* TODO   */
-  { 0, ~0x003, A },
-  { 0x002, ~0x005, I }
-};
+    {/*    input   mask      nxtstate */
+     /* TODO   */
+     {0, ~0x003, A},
+     {0x002, ~0x005, I}};
 
 static const fsm_state_t s_transitions_I[] =
-{ /*    input   mask      nxtstate */
-  /* TODO   */
-  { 0, ~0x003, A }
-};
+    {/*    input   mask      nxtstate */
+     /* TODO   */
+     {0, ~0x003, A}};
 
 /* Definition der Uebergangstabelle */
 /* Die Reihenfolge der Zustaende in der enum Definition muss der
  * Reihenfolge der Zustaende in der Uebergangstabelle entsprechen
  *                 [Zeile] [Spalte] */
 static const fsm_full_state_t s_state_table[NR_OF_STATES] =
-{
-    /* transitions     nrOfTransitions           defaultNxtState */
-    { s_transitions_A, SIZE_OF(s_transitions_A), A },
-    { s_transitions_B, SIZE_OF(s_transitions_B), B },
-    { s_transitions_C, SIZE_OF(s_transitions_C), C },
-    { s_transitions_D, SIZE_OF(s_transitions_D), D },
-    /* TODO   */
-    { s_transitions_E, SIZE_OF(s_transitions_E), E },
-    { s_transitions_F, SIZE_OF(s_transitions_F), F },
-    { s_transitions_G, SIZE_OF(s_transitions_G), G },
-    { s_transitions_H, SIZE_OF(s_transitions_H), H },
-    { s_transitions_I, SIZE_OF(s_transitions_I), I }
-    /* {    } */
+    {
+        /* transitions     nrOfTransitions           defaultNxtState */
+        {s_transitions_A, SIZE_OF(s_transitions_A), A},
+        {s_transitions_B, SIZE_OF(s_transitions_B), B},
+        {s_transitions_C, SIZE_OF(s_transitions_C), C},
+        {s_transitions_D, SIZE_OF(s_transitions_D), D},
+        /* TODO   */
+        {s_transitions_E, SIZE_OF(s_transitions_E), E},
+        {s_transitions_F, SIZE_OF(s_transitions_F), F},
+        {s_transitions_G, SIZE_OF(s_transitions_G), G},
+        {s_transitions_H, SIZE_OF(s_transitions_H), H},
+        {s_transitions_I, SIZE_OF(s_transitions_I), I}
+        /* {    } */
 };
 
 /* Definition der Ausgaenge */
-static const fsm_action_t s_out_table[NR_OF_STATES] = 
-{
-    /* display    muenz_rueck   kaffee_los     guthaben,   display_string */
-    {   false,       false,       false,          0,          "Warten" },    /* state A */
-    {   false,       false,       false,          1,          "1 Euro" },    /* state B */
-    {   false,       false,       false,          2,          "2 Euro" },    /* state C */
-    {   false,       false,       false,          3,          "3 Euro" },    /* state D */
-     /* TODO   */
-    {   false,        true,       false,          3,          "3 Euro" },    /* state E */
-    {    true,       false,       false,          4,          "4 Euro" },    /* state F */
-    {    true,        true,       false,          4,          "4 Euro" },    /* state G */
-    {   false,       false,        true,          0,          "Kaffee wird zubereitet" },    /* state H */
-    {   false,        true,        true,          0,          "Kaffee wird zubereitet" }    /* state I */
-   
-    /* {    } */
+static const fsm_action_t s_out_table[NR_OF_STATES] =
+    {
+        /* display    muenz_rueck   kaffee_los     guthaben,   display_string */
+        {false, false, false, 0, "Warten"},                /* state A */
+        {false, false, false, 1, "1 Euro"},                /* state B */
+        {false, false, false, 2, "2 Euro"},                /* state C */
+        {false, false, false, 3, "3 Euro"},                /* state D */
+                                                           /* TODO   */
+        {false, true, false, 3, "3 Euro"},                 /* state E */
+        {true, false, false, 4, "4 Euro"},                 /* state F */
+        {true, true, false, 4, "4 Euro"},                  /* state G */
+        {false, false, true, 0, "Kaffee wird zubereitet"}, /* state H */
+        {false, true, true, 0, "Kaffee wird zubereitet"}   /* state I */
+
+        /* {    } */
 };
 
 /*--- Funktionsdefinition --------------------------------------------*/
 void automat_reset(void)
 {
-    printf("---- automat_reset ----\n");
-    /* TODO go into IDLE state */
-    s_curstate=A;
-    automat_output();//evtl unnoetig
+  printf("---- automat_reset ----\n");
+  /* TODO go into IDLE state */
+  s_curstate = A;
+  automat_output(); // evtl unnoetig
 }
 
 /*--- Funktionsdefinition --------------------------------------------*/
 void automat_transition(BOOL becher, BOOL muenze, BOOL muenz_wert)
 {
-    printf("---- automat_transition becher(%0d) muenze(%0d) muenz_wert(%0d) ----\n",
-           becher, muenze, muenz_wert);
-    /* TODO do automat transitions */
-  
+  printf("---- automat_transition becher(%0d) muenze(%0d) muenz_wert(%0d) ----\n",
+         becher, muenze, muenz_wert);
+  /* TODO do automat transitions */
+  // input in Hex
+  int ev = becher * 4 + muenze * 2 + muenz_wert;
+  // selektieren mit Mask
+  // vergleichen mit Input
+  // next state setzen
+  switch (s_curstate)
+  {
+  case A:
+    if (ev & s_transitions_A[0].mask == s_transitions_A[0].input)
+    {
+      s_curstate = s_transitions_A[0].nxtstate;
+    }
+    else if (ev & s_transitions_A[1].mask == s_transitions_A[1].input)
+    {
+      s_curstate = s_transitions_A[1].nxtstate;
+    }
+    break;
+  case B:
+    if (ev & s_transitions_B[0].mask == s_transitions_B[0].input)
+    {
+      s_curstate = s_transitions_B[0].nxtstate;
+    }
+    else if (ev & s_transitions_B[1].mask == s_transitions_B[1].input)
+    {
+      s_curstate = s_transitions_B[1].nxtstate;
+    }
+    break;
+  case C:
+    if (ev & s_transitions_C[0].mask == s_transitions_C[0].input)
+    {
+      s_curstate = s_transitions_C[0].nxtstate;
+    }
+    else if (ev & s_transitions_C[1].mask == s_transitions_C[1].input)
+    {
+      s_curstate = s_transitions_C[1].nxtstate;
+    }
+    else if (ev & s_transitions_C[2].mask == s_transitions_C[2].input)
+    {
+      s_curstate = s_transitions_C[2].nxtstate;
+    }
+    break;
+  case D:
+    if (ev & s_transitions_D[0].mask == s_transitions_D[0].input)
+    {
+      s_curstate = s_transitions_D[0].nxtstate;
+    }
+    else if (ev & s_transitions_D[1].mask == s_transitions_D[1].input)
+    {
+      s_curstate = s_transitions_D[1].nxtstate;
+    }
+    else if (ev & s_transitions_D[2].mask == s_transitions_D[2].input)
+    {
+      s_curstate = s_transitions_D[2].nxtstate;
+    }
+    break;
+  case E:
+    if (ev & s_transitions_E[0].mask == s_transitions_E[0].input)
+    {
+      s_curstate = s_transitions_E[0].nxtstate;
+    }
+    else if (ev & s_transitions_E[1].mask == s_transitions_E[1].input)
+    {
+      s_curstate = s_transitions_E[1].nxtstate;
+    }
+    else if (ev & s_transitions_E[2].mask == s_transitions_E[2].input)
+    {
+      s_curstate = s_transitions_E[2].nxtstate;
+    }
+    break;
+  case F:
+    if (ev & s_transitions_F[0].mask == s_transitions_F[0].input)
+    {
+      s_curstate = s_transitions_F[0].nxtstate;
+    }
+    else if (ev & s_transitions_F[1].mask == s_transitions_F[1].input)
+    {
+      s_curstate = s_transitions_F[1].nxtstate;
+    }
+    break;
+  case G:
+    if (ev & s_transitions_G[0].mask == s_transitions_G[0].input)
+    {
+      s_curstate = s_transitions_G[0].nxtstate;
+    }
+    break;
+  case H:
+    if (ev & s_transitions_H[0].mask == s_transitions_H[0].input)
+    {
+      s_curstate = s_transitions_H[0].nxtstate;
+    }
+    else if (ev & s_transitions_H[1].mask == s_transitions_H[1].input)
+    {
+      s_curstate = s_transitions_H[1].nxtstate;
+    }
+    break;
+  case I:
+    if (ev & s_transitions_I[0].mask == s_transitions_I[0].input)
+    {
+      s_curstate = s_transitions_I[0].nxtstate;
+    }
+    break;
+  }
 }
 
 /*--- Funktionsdefinition --------------------------------------------*/
 fsm_action_t automat_output(void)
 {
-    return s_out_table[s_curstate];
+  return s_out_table[s_curstate];
 }
