@@ -88,6 +88,7 @@ Matrix copyMatrix(const Matrix toCopy)
    Matrix newM;
    newM.spalten = toCopy.spalten;
    newM.zeilen = toCopy.zeilen;
+   newM.mElement = (MatTyp *)malloc(newM.spalten * newM.zeilen * sizeof(MatTyp));
    for (int i = 0; i < toCopy.spalten * toCopy.zeilen; i++)
    {
       newM.mElement[i] = toCopy.mElement[i];
@@ -241,13 +242,13 @@ Matrix multMatrix(const Matrix ma, const Matrix mb) // testen!
    mM.mElement = (MatTyp *)malloc((mb.spalten * ma.zeilen) * sizeof(MatTyp));
    if (ma.spalten == mb.zeilen)// Multiplikation wenn Spaltenzahl erster gleich der Zeilenzahl der zweiten Matrix
    { 
-      // 1. Index der Zielmatrix:
+      // 1. Index der Zielmatrix suchen:
       for (z = 0; z < ma.zeilen; z++)
       {
          for (s = 0; s < mb.spalten; s++)
          {
             mM.mElement[z * mb.spalten + s] = 0;
-            // 2. Summe das Produkts von Zeile und Spalte der Multiplikations Matrizen
+            // 2. Summe das Produkts von Zeile und Spalte der Multiplikations Matrizen ermitteln:
             for (int i=0; i < ma.spalten; i++)
             {
                mM.mElement[z * mb.spalten + s] += ma.mElement[z * ma.spalten + ( i)] * mb.mElement[( i) * mb.spalten + s];
@@ -313,7 +314,7 @@ double determMatrix(const Matrix ma)
       for (int i = 0; i < ma.spalten; i++)
       {
          produkt*= ma.mElement[(z + i) * ma.spalten + ((s + i)%ma.spalten)];//Problem Ueberlaf da Matrix erweitert werden muss
-         //=> wenn s+i=ma.spalten dann soll s+i(wieder)=0 ==>%3 bei 3x3
+         //=> wenn s+i=ma.spalten dann soll s+i(wieder)=0 ==>%3 bei 3x3 um bei Ueberlauf zu 0 zurueck 
       }
       det += produkt;
       //printf("%.1lf+",produkt);

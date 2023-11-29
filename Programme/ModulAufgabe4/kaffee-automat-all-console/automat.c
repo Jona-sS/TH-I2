@@ -45,7 +45,7 @@ static state_t s_curstate = A; /* Initialisierung */
 static const fsm_state_t s_transitions_A[] =
 { /*    input   mask      nxtstate */
   {     0x002,  ~0x004,   B },
-  {     0x003,  ~0x004,   C }
+  {     0x003,  ~0x004,   C }//Transitionsbedingungen um von A nach C zu kommen -11 wobei ~0x004 den 3. bit raus nimmt 
 };
 
 static const fsm_state_t s_transitions_B[] =
@@ -83,19 +83,20 @@ static const fsm_state_t s_transitions_F[] =
 static const fsm_state_t s_transitions_G[] =
 { /*    input   mask      nxtstate */
   /* TODO   */
-  { 0, 0, A }
+  { 0x004, 0, H }
 };
 
 static const fsm_state_t s_transitions_H[] =
 { /*    input   mask      nxtstate */
   /* TODO   */
-  { 0, 0, A }
+  { 0, ~0x003, A },
+  { 0x002, ~0x005, I }
 };
 
 static const fsm_state_t s_transitions_I[] =
 { /*    input   mask      nxtstate */
   /* TODO   */
-  { 0, 0, A }
+  { 0, ~0x003, A }
 };
 
 /* Definition der Uebergangstabelle */
