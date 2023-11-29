@@ -122,10 +122,10 @@ static const fsm_action_t s_out_table[NR_OF_STATES] =
     {   false,       false,       false,          2,          "2 Euro" },    /* state C */
     {   false,       false,       false,          3,          "3 Euro" },    /* state D */
     {   false,        true,       false,          3,          "3 Euro" },    /* state E */
-    {    true,       false,       false,          4,          "3 Euro" },    /* state F */
-    {    true,        true,       false,          4,          "3 Euro" },    /* state G */
-    {   false,       false,        true,          0,          "3 Euro" },    /* state H */
-    {   false,        true,        true,          0,          "3 Euro" },    /* state I */
+    {    true,       false,       false,          4,          "4 Euro" },    /* state F */
+    {    true,        true,       false,          4,          "4 Euro" },    /* state G */
+    {   false,       false,        true,          0,          "Kaffee wird zubereitet" },    /* state H */
+    {   false,        true,        true,          0,          "Kaffee wird zubereitet" },    /* state I */
     /* TODO   */
     /* {    } */
 };
