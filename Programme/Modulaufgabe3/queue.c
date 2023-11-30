@@ -46,8 +46,8 @@ Bool put(int zahl)
 	if (neuerDatenpunkt == 0)
 		return -1;
 
-	neuerDatenpunkt->Datenpunkt = zahl;
-	neuerDatenpunkt->weiter = 0;
+	neuerDatenpunkt->Datenpunkt = zahl; //Zahl wird in den Structschlange reinkopiert
+	neuerDatenpunkt->weiter = 0; //Element wird am Ende eingefügt, weiter auf 0, da es vorserst keine nachfolgenden Elemente gibt
 
 	if (start == 0) // Am Anfang den Startzeiger auf den ersten Wert legen , sonst den Endzeiger bei neuen Zahlen weiterschieben
 	{
@@ -79,7 +79,7 @@ int get(void)
 
 	Warteschlange *werteReihe;		   // Neuen Zeiger erstellen
 	werteReihe = start;				   // auf den start wert initallisieren
-	int wert = werteReihe->Datenpunkt; // den Datenpunkt als int in var speichern
+	int wert = werteReihe->Datenpunkt; // den Datenpunkt als int in var speichern, damit Speicher freigegeben werden kann
 
 	if (start == 0)
 	{
@@ -89,7 +89,7 @@ int get(void)
 	start = start->weiter; // Den Startzeiger weiterschieben in die nächste Struct Ebene
 	free(werteReihe);	   // Speicher von dem dann ausgebener Struct löschen
 
-	return wert;
+	return wert; 
 }
 
 /*--------------------------------------------------------------------*\
