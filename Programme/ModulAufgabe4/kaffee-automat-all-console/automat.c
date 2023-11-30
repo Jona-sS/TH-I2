@@ -166,17 +166,29 @@ void automat_reset(void)
   printf("---- automat_reset ----\n");
   /* TODO go into IDLE state */
   s_curstate = A;
-  automat_output();
+  automat_output(); // evtl unnoetig
 }
 
 /*--- Funktionsdefinition --------------------------------------------*/
 void automat_transition(BOOL becher, BOOL muenze, BOOL muenz_wert)
 {
-    printf("---- automat_transition becher(%0d) muenze(%0d) muenz_wert(%0d) ----\n",
-           becher, muenze, muenz_wert);
-    /* TODO do automat transitions */
+  printf("---- automat_transition becher(%0d) muenze(%0d) muenz_wert(%0d) ----\n",
+         becher, muenze, muenz_wert);
+  /* TODO do automat transitions */
+  // input in Hex
+  int ev = becher * 4 + muenze * 2 + muenz_wert;
+  // selektieren mit Mask
+  // vergleichen mit Input
+  // next state setzen
+  for (int i = 0; i < s_state_table[s_curstate].nrOfTransitions; i++)
+  {
+    if ((ev & (s_state_table[s_curstate].transitions[i].mask)) == (s_state_table[s_curstate].transitions[i].input))
+    {
+      s_curstate = (s_state_table[s_curstate].transitions[i].nxtstate);
+      break;
+    }
+  }
 }
-
 /*--- Funktionsdefinition --------------------------------------------*/
 fsm_action_t automat_output(void)
 {
