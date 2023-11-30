@@ -180,6 +180,17 @@ void automat_transition(BOOL becher, BOOL muenze, BOOL muenz_wert)
   // selektieren mit Mask
   // vergleichen mit Input
   // next state setzen
+  for (int i = 0; i < s_state_table[s_curstate].nrOfTransitions; i++)
+  {
+    if ((ev & s_state_table[s_curstate].transitions->mask) == (ev & s_state_table[s_curstate].transitions->input))
+    {
+      s_curstate = (ev & s_state_table[s_curstate].transitions->nxtstate);
+    }
+  }
+  
+
+  //alt
+  /***
   switch (s_curstate)
   {
   case A:
@@ -302,7 +313,7 @@ void automat_transition(BOOL becher, BOOL muenze, BOOL muenz_wert)
       s_curstate = s_transitions_I[3].nxtstate;
     }
     break;
-  }
+  }*/
 }
 
 /*--- Funktionsdefinition --------------------------------------------*/
