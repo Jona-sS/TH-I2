@@ -1,14 +1,11 @@
+// Argumente in Kommandozeile
+// Rechnen mit Dualzahlen
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
 #define ERROR 9
 #define MAX_LAENGE 20
 
-//+ und - geht 
-//Negaitve Zahlen und ^,*,& nicht
-
-// Argumente in Kommandozeile
-// Rechnen mit Dualzahlen
 int argutmentToInt(char *argument)
 { 
     int zahl = 0;
@@ -28,17 +25,17 @@ int argutmentToInt(char *argument)
     //printf("=%d\n",zahl);
     return zahl;
 }
-int main(int anzahl, char *argumente[])
+int main(int anzahl, char *argumente[])//je nach Kompiler muessen manche Operatoren in "_" gesetzt werden
 {
     int x = 0, y = 0, z = 0, lenDualZahl=1, dualZahl[MAX_LAENGE];//dynamisch
     char operator;
-    // Abbruch bei falscher Eingabe: anzahl = Menge der Argumente+1
+    // Abbruch bei falscher Eingabe: anzahl = Menge der Argumente+1 da Nulltes Argument gleich Ausfuehrungsbefehl (.\26.2.exe)
     if (anzahl != 4)
     {
-        printf("anzahl=%d\nRichtiger Aufruf: dualrech <operand> <operator> <operand>\n\tErlaubte Operatoren sind: +, -, *, /, &, ^",anzahl);
+        printf("Richtiger Aufruf: dualrech <operand> <operator> <operand>\n\tErlaubte Operatoren sind: +, -, *, /, &, ^",anzahl);
         return 0;
     }
-    x = argutmentToInt(argumente[1]); // 1 da Nulltes Argument gleich Ausfuehrungsbefehl (.\26.2.exe)
+    x = argutmentToInt(argumente[1]);
     y = argutmentToInt(argumente[3]);
     operator= * argumente[2];
     switch (operator)
