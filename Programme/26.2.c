@@ -5,7 +5,7 @@
 #define MAX_LAENGE 20
 
 //+ und - geht 
-//Negaitve Zahlen und ^ nicht
+//Negaitve Zahlen und ^,*,& nicht
 
 // Argumente in Kommandozeile
 // Rechnen mit Dualzahlen
@@ -35,7 +35,7 @@ int main(int anzahl, char *argumente[])
     // Abbruch bei falscher Eingabe: anzahl = Menge der Argumente+1
     if (anzahl != 4)
     {
-        printf("%dRichtiger Aufruf: dualrech <operand> <operator> <operand>\n\tErlaubte Operatoren sind: +, -, *, /, &, ^",anzahl);
+        printf("anzahl=%d\nRichtiger Aufruf: dualrech <operand> <operator> <operand>\n\tErlaubte Operatoren sind: +, -, *, /, &, ^",anzahl);
         return 0;
     }
     x = argutmentToInt(argumente[1]); // 1 da Nulltes Argument gleich Ausfuehrungsbefehl (.\26.2.exe)
@@ -69,12 +69,12 @@ int main(int anzahl, char *argumente[])
     if (x == ERROR || y == ERROR)
         return 0; // Bei Dualzahl Fehler hier abbrechen
     // z in Dual wandeln:
-    if(z<0)z=__INT_MAX__-z;//Zweierkompliment bilden
+    if(z<0)z=(z-__INT_MAX__-1);//Zweierkompliment bilden
+    printf("z=%d\n",z);
     for (int zDiv=z; zDiv>0 && lenDualZahl<MAX_LAENGE; lenDualZahl++)
     {
         //printf("zDiv=%d\n",zDiv%2);
         dualZahl[lenDualZahl]=zDiv%2;
-        //dualZahl[MAX_Laenge-i]=z%2;//Array von hinten auffuellen     alternativ von hinten ausgeben
         zDiv=zDiv/2;
     }
     //printf("L=%d\t",lenDualZahl);
