@@ -189,7 +189,6 @@ void automat_transition(BOOL becher, BOOL muenze, BOOL muenz_wert)
     }
   }
 }
-
 /*--- Funktionsdefinition --------------------------------------------*/
 fsm_action_t automat_output(void)
 {
