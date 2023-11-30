@@ -166,7 +166,7 @@ void automat_reset(void)
   printf("---- automat_reset ----\n");
   /* TODO go into IDLE state */
   s_curstate = A;
-  automat_output(); // evtl unnoetig
+  automat_output();
 }
 
 /*--- Funktionsdefinition --------------------------------------------*/
