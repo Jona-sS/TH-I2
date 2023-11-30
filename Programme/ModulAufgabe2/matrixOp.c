@@ -93,6 +93,7 @@ Matrix copyMatrix(const Matrix toCopy)
    {
       newM.mElement[i] = toCopy.mElement[i];
    }
+   return newM;
 }
 
 /*--------------------------------------------------------------------*\
