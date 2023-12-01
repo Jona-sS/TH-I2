@@ -4,7 +4,7 @@
 #
 automat.exe: automat.o checker.o view.o io.o main.o
 	gcc -o automat.exe automat.o checker.o view.o io.o main.o
-
+	.\automat.exe
 automat.o: automat.c automat.h
 	gcc -c -Wall automat.c
 

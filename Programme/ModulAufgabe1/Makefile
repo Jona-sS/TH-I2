@@ -4,7 +4,7 @@
 #
 TestComplex.exe: TestComplex.o complex.o
 	gcc -o TestComplex.exe complex.o TestComplex.o
-
+	.\TestComplex.exe
 complex.o: complex.c complex.h
 	gcc -c -Wall complex.c
 
