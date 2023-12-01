@@ -15,19 +15,18 @@ int main()
     printf("User = suchtext: ");
     fgets(input, MAX, stdin); // Einlesen des Strings
     int count = 0;
-    char *token = strtok(input, teiler);
-    while (token != NULL) // Zerteilen des strings auf 1 Wort und Dateinamen
+    char *token = strtok(input, teiler);//\n entfernen weil sonst der Pfad nicht gefunden wird
+    while (token != NULL) // Zerteilen des eingegbenen strings auf 1 Wort und Dateinamen
     {
         if (count == 0)
             strcpy(wort, token);
         else if (count == 1)
             strcpy(dateiname, token);
-
         token = strtok(NULL, teiler);
         count++;
     }
 
-    datei = fopen(dateiname, "r"); // Überpruefung ob Datei gefunden und geöffnet werden kann/Schaut in das verzeichnis wo die Datei leigt. Sonst muss Pfad angegebnw werden
+    datei = fopen(dateiname, "r"); // Überpruefung ob Datei gefunden und geöffnet werden kann/Schaut in das verzeichnis wo die .exe leigt. Sonst muss Pfad angegebnw werden
                                    //  z.B. const char *pfad = "/Pfad/zur/deiner/Datei/beispiel.txt"; mit strcat zusammenfügen
     if (datei == 0)
     {
@@ -38,10 +37,8 @@ int main()
     int vorhanden = 1;
     while (fgets(buffer, sizeof(buffer), datei) != NULL)
     {
-
-        if (strstr(buffer, wort)) // Kommt Wert vor soll die kommplette Zeile ausgeben werden
+        if (strstr(buffer, wort)) // Kommt das Wort vor soll die kommplette Zeile ausgeben werden
             printf("%d. %s\n", vorhanden, buffer);
-
         vorhanden++; // Hochzählen damit man weiß in welcher Zeile das Wort vorkommt
     }
     return 0;
