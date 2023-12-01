@@ -46,7 +46,7 @@ Bool put(int zahl)
 	if (neuerDatenpunkt == 0)
 		return -1;
 
-	neuerDatenpunkt->Datenpunkt = zahl; //Zahl wird in den Structschlange reinkopiert
+	neuerDatenpunkt->Datenpunkt = zahl; //Zahl wird in die Structschlange reinkopiert
 	neuerDatenpunkt->weiter = 0; //Element wird am Ende eingefügt, weiter auf 0, da es vorserst keine nachfolgenden Elemente gibt
 
 	if (start == 0) // Am Anfang den Startzeiger auf den ersten Wert legen , sonst den Endzeiger bei neuen Zahlen weiterschieben
@@ -58,7 +58,7 @@ Bool put(int zahl)
 		ende->weiter = neuerDatenpunkt; // Wenn es nicht der Anfang ist dann wird bei jedem neuen Struct Aufruf der Endzeiger auf den neuen hinzugefügten Zeiger gelegt
 	}
 	ende = neuerDatenpunkt; // Den Endzeiger auf letzten hinzugefügten Wert legen
-
+	//Alternativ falls nur anfang bekannt: durch Liste laufen bis start->weiter == NULL
 	return TRUE;
 }
 

@@ -22,7 +22,7 @@
 int main(void)
 {
    int n, z, i=1, nr;
-   
+   //Eingabe
    do {
       printf("Wie viele Personen: ");
       nr = scanf("%d", &n); getchar();
@@ -46,6 +46,5 @@ int main(void)
                                   // Diese Zahl nicht mehr einfügen
    }
    printf("\n");
-   
    return 0;
 }

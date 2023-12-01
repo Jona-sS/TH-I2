@@ -26,21 +26,21 @@ int argutmentToInt(char *argument)
     //printf("=%d\n",zahl);
     return zahl;
 }
-int main(int anzahl, char *argumente[])//je nach Kompiler muessen manche Operatoren in "_" gesetzt werden wird als einzigstens element ins char array gespeichert
+int main(int argc, char *argv[])//je nach Kompiler muessen manche Operatoren in "_" gesetzt werden wird als einzigstens element ins char array gespeichert
 {
     int x = 0, y = 0, z = 0, lenDualZahl=1, *dualZahl;
     char operator;
     dualZahl=(int *)malloc(lenDualZahl * sizeof(int));
-    // Abbruch bei falscher Eingabe: anzahl = Menge der Argumente+1 da Nulltes Argument gleich Ausfuehrungsbefehl (.\26.2.exe)
-    if (anzahl != 4)
+    // Abbruch bei falscher Eingabe: argc = Menge der Argumente+1 da Nulltes Argument gleich Ausfuehrungsbefehl (.\26.2.exe)
+    if (argc != 4)
     {
         printf("Richtiger Aufruf: dualrech <operand> <operator> <operand>\n\tErlaubte Operatoren sind: +, -, *, /, &, ^");
         return 0;
     }
     //Strings in Int wandeln
-    x = argutmentToInt(argumente[1]);
-    y = argutmentToInt(argumente[3]);
-    operator= * argumente[2];
+    x = argutmentToInt(argv[1]);
+    y = argutmentToInt(argv[3]);
+    operator= * argv[2];
     //berechnen
     switch (operator)
     {
@@ -81,7 +81,7 @@ int main(int anzahl, char *argumente[])//je nach Kompiler muessen manche Operato
     }
     //printf("L=%d\t",lenDualZahl);
     //Ausgabe:
-    printf("%s %s %s\n.......",argumente[1],argumente[2],argumente[3]);
+    printf("%s %s %s\n.......",argv[1],argv[2],argv[3]);
     for(int i=1;i!=lenDualZahl;i++){
         printf("%d",dualZahl[lenDualZahl-i]);
     }
