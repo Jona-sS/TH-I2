@@ -26,7 +26,7 @@ int argutmentToInt(char *argument)
     //printf("=%d\n",zahl);
     return zahl;
 }
-int main(int anzahl, char *argumente[])//je nach Kompiler muessen manche Operatoren in "_" gesetzt werden
+int main(int anzahl, char *argumente[])//je nach Kompiler muessen manche Operatoren in "_" gesetzt werden wird als einzigstens element ins char array gespeichert
 {
     int x = 0, y = 0, z = 0, lenDualZahl=1, *dualZahl;
     char operator;
