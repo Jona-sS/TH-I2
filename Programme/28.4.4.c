@@ -45,7 +45,7 @@ int main(){
         nr++;
     }
     //Auswertung:
-    printf("\t\tName\t\t, Vorname\t\t, Note\n-----------------------------------------------------------------------------\n");
+    printf("\t\tName\t\t, Vorname\t, Note\n-----------------------------------------------------------------------------\n");
     //Druchschnitt ermitteln:
     for(int i=0;i<nr;i++){
         printf("%6d. \t%s\t\t, %s\t\t,  %d\n",i+1,klasse[i].name,klasse[i].vorname,klasse[i].note);
