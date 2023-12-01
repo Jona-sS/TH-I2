@@ -4,7 +4,6 @@
 #
 TestMatrix.exe: matrixOp.o TestMatrix.o
 	gcc -o TestMatrix.exe matrixOp.o TestMatrix.o
-	.\TestMatrix.exe
 matrixOp.o: matrixOp.c matrixOp.h
 	gcc -c -Wall matrixOp.c
 
