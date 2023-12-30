@@ -44,7 +44,7 @@ Bool put(int zahl)
 {
 	Warteschlange *neuerDatenpunkt = malloc(sizeof(struct Warteschlange)); // Neuen Zeiger erstellen um neue Zahl in die Warteschlange zu packen
 	if (neuerDatenpunkt == 0)
-		return -1;
+		return FALSE;
 
 	neuerDatenpunkt->Datenpunkt = zahl; //Zahl wird in die Structschlange reinkopiert
 	neuerDatenpunkt->weiter = 0; //Element wird am Ende eingefügt, weiter auf 0, da es vorserst keine nachfolgenden Elemente gibt
