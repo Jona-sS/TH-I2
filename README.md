@@ -4,7 +4,7 @@ Tipps:
     Einrichung:
 Das Programm Git muss Installiert sein.
 Clone Link aus Repositiory ziehen
-in cmd Zielordner auswählen und "git clone -Link-" ausführen
+in cmd Zielordner auswählen und         "git clone -Link-" ausführen
 (https://www.youtube.com/watch?v=eLmpKKaQL54)
 in VS Code muss git user name und email in die bash Konsole eingetragen werden 
 (https://www.youtube.com/watch?v=lYiE5lBS13E)
